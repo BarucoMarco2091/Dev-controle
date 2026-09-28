@@ -1,0 +1,39 @@
+{
+  "name": "devcontrole",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@auth/prisma-adapter": "^2.11.3",
+    "@hookform/resolvers": "^5.9.1",
+    "@prisma/client": "^6.19.0",
+    "axios": "^1.20.0",
+    "dotenv": "^17.4.2",
+    "mongodb": "^7.6.0",
+    "next": "16.3.1",
+    "next-auth": "^4.24.15",
+    "openid-client": "^6.8.7",
+    "prisma": "^6.19.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-hook-form": "^7.88.0",
+    "react-icons": "^5.7.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20.19.43",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
