@@ -2,8 +2,9 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import prismaClient from '@/lib/prisma'
-import { error } from "console";
 
+// criar rota backend pra atualizar o chamado
+//patch: atualizar pedaço da rota  
 export async function PATCH(request: Request) {
     const session = await getServerSession(authOptions)
 
@@ -11,8 +12,10 @@ export async function PATCH(request: Request) {
         return NextResponse.json({ error: "Not authorized" }, { status: 401 })
     }
 
+    // mandar o id do chamado pra saber onde clicou
     const { id } = await request.json()
 
+    // buscar ticket 
     const findTicket = await prismaClient.ticket.findFirst({
         where:{
             id: id as string
@@ -22,7 +25,7 @@ export async function PATCH(request: Request) {
     if(!findTicket){
         return NextResponse.json({ error: "failed update ticket" }, { status: 400 })
     }
-
+    // atualizar 
     try{
         await prismaClient.ticket.update({
             where:{
