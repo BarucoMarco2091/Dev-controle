@@ -15,6 +15,7 @@ interface TicketItemProps{
 
 export function TicketItem({ customer, ticket }: TicketItemProps) {
     const router = useRouter()
+    // consumir o contexto
     const { handleModalVisible, setDetailTicket } = useContext(ModalContext)
 
     async function handleChangeStatus() {
@@ -29,7 +30,9 @@ export function TicketItem({ customer, ticket }: TicketItemProps) {
     }
 
     function handleOpenModal() {
+        // abrir o modal
         handleModalVisible()
+        // passar as informações do ticket que abriu
         setDetailTicket({
             customer: customer,
             ticket: ticket

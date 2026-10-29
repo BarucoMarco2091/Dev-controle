@@ -3,6 +3,33 @@ import { NextResponse } from 'next/server'
 import { authOptions } from '@/lib/auth'
 import { getServerSession } from 'next-auth'
 import prismaClient from '@/lib/prisma'
+import { error } from 'console'
+
+// listar clientes 
+export async function GET(request: Request) {
+    // receber email através do parametro da rota
+    const { searchParams } = new URL(request.url)
+    const customerEmail = searchParams.get("email")
+
+    // validação 
+    if (!customerEmail || customerEmail === "") {
+        return NextResponse.json({ error: "Customer not found" }, { status: 400 })
+    }
+
+    try {
+        const customer = await prismaClient.customer.findFirst({
+            where: {
+                email: customerEmail
+            }
+        })
+
+        return NextResponse.json(customer)
+    } catch (err) {
+        return NextResponse.json({ error: "Customer not found" }, { status: 400 })
+    }
+
+    return NextResponse.json({ message: "Recebido" })
+}
 
 // fazer requisição http para deletar passando o id
 export async function DELETE(request: Request) {
